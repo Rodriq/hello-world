@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dice</title>
+</head>
+<link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="public/css/fa-svg-with-js.css">
+
+<body>
+	<div class="container">
+		<div style="background-color: #f1f1f1; padding: 15px; text-align: center;">
+			<h1 id="h1">Welcome To the Dice guessing game ( DGG )</h1>
+
+		</div>
+		<div class="row">
+			<div class="col-md-2" style="background-color: green;"></div>
+			<div class="col-md-8">
+				<div class="container" id="header" style="text-align: center; background-image : url('public/image/images.png')">
+					<hr>
+					<div>
+						<img src="" id="welcomeImage">
+					</div>
+					<form>
+						<div class="form-group">
+							<label for="guess" class="col-sm-4"><b>Guess Number:</b></label>
+							<input type="number" class="form-control col-sm-6" id="guess" min="1" max="6" onmouseleave="guessed()" placeholder="Guess number from 1-6">
+
+						</div>
+					</form>
+					<img src="" id="initialImage" class="img-thumbnail" height="120px" width="200px" ">
+
+					
+					&nbsp;
+					<button class="btn-lg btn-success " onclick="spin()">Spin</button>
+					&nbsp;
+					<img src="" id="finalImage"  class="img-thumbnail" height="120px" width="200px" ">
+				</div>
+			</div>
+			<div class="col-md-2" style="background-color: yellow;"></div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="public/js/bootstrap.js"></script>
+<script type="text/javascript" src="public/js/swal.min.js"></script>
+<script type="text/javascript">
+	var input = document.getElementById("guess").value;
+	function guessed() {
+		// body...
+		var input = document.getElementById("guess").value;
+		if (input >=1 && input <=5) {
+			confirm("Are you sure about this value => " + input  +"?");
+			var initialImage = document.getElementById("initialImage");
+			initialImage.src = "public/image/dice"+input+".png";
+		}
+		else {
+			initialImage.src="";
+		}
+	}
+	function spin() {
+		var finalImage = document.getElementById("finalImage");
+		var guessedResult = Math.floor(Math.random() * 6) +1 ;
+		finalImage.src = "public/image/dice"+guessedResult+".png";
+	}
+	
+	
+</script>
+</html>
